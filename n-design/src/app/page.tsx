@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 export default function Home() {
   const aboutSectionRef = useRef<HTMLDivElement>(null);
   const servicesSectionRef = useRef<HTMLDivElement>(null);
+  const [lastSection, setLastSection] = useState<string | null>(null);
 
   const [triggerAboutAnimation, setTriggerAboutAnimation] = useState(false);
   const [triggerServicesAnimation, setTriggerServicesAnimation] =
@@ -47,7 +48,8 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  const handleNavClick = (id: string) => {
+  const handleNavClick = (id: string,fromId?: string) => {
+    if (fromId) setLastSection(fromId);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     if (id === "about") setTriggerAboutAnimation(true);
     if (id === "services") setTriggerServicesAnimation(true);
@@ -63,36 +65,54 @@ export default function Home() {
     <main className="bg-black text-white">
       {/* Hero Section */}
       <section className="flex flex-col h-screen w-full items-center justify-center gap-[10vw]">
-        <div className="relative w-[15vw]">
-          <img
-            src="/background.png"
-            alt="Animated Logo"
-            className="w-full relative z-10"
-          />
-          <div className="absolute top-0 left-0 h-full bg-white z-0 animate-growRight" />
-        </div>
+      <div className="relative w-[15vw] overflow-hidden">
+        {/* Static white background behind everything */}
+        {/* <div className="absolute top-0 left-0 w-full h-full bg-white z-0 fade-in-bg" /> */}
 
-        <nav className="flex gap-[10vw] text-[1.2vw]">
-          <a
-            onClick={() => handleNavClick("about")}
-            className="cursor-pointer hover:text-[1.4vw] transition-all duration-300"
-          >
-            About Us
-          </a>
-          <a
-            onClick={() => handleNavClick("services")}
-            className="cursor-pointer hover:text-[1.4vw] transition-all duration-300"
-          >
-            Services
-          </a>
-          <a
-            href="#contact"
-            className="hover:text-[1.4vw] transition-all duration-300"
-          >
-            Contact
-          </a>
-        </nav>
-      </section>
+        {/* Rectangle expand animation */}
+        {/* <div className="absolute top-1/2 left-1/2 w-10 h-10 bg-white z-10 animate-expandRect origin-center" /> */}
+        <div
+          className="absolute top-2/5 left-1/2 w-10 h-10 bg-white rounded-full z-0 animate-expandCircleFadeIn origin-center transform -translate-x-1/2"
+        />  
+        {/* Light sweep animation */}
+        {/* <div
+          className="absolute top-0 left-[-100%] w-[250%] h-full z-10 animate-lightSweep delay-sweep"
+          style={{
+            background: 'linear-gradient(to right, transparent, white, transparent)',
+            filter: 'blur(6px)',
+          }}
+        /> */}
+
+        {/* Logo image always on top */}
+        <img
+          src="/background.png"
+          alt="Animated Logo"
+          className="w-full relative z-20"
+        />
+      </div>
+
+      <nav className="flex gap-[10vw] text-[1.2vw] opacity-0 animate-fadeInNav">
+
+    <a
+      onClick={() => handleNavClick("about")}
+      className="cursor-pointer hover:text-[1.4vw] transition-all duration-300"
+    >
+      About Us
+    </a>
+    <a
+      onClick={() => handleNavClick("services")}
+      className="cursor-pointer hover:text-[1.4vw] transition-all duration-300"
+    >
+      Services
+    </a>
+    <a
+      href="#contact"
+      className="hover:text-[1.4vw] transition-all duration-300"
+    >
+      Contact
+    </a>
+  </nav>
+</section>
 
       {/* About Section */}
       <section
@@ -145,12 +165,13 @@ export default function Home() {
               <div className="border border-gray-300 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
                 <div className="text-3xl mb-2">🏛️</div>
                 <h3 className="text-2xl font-bold mb-1">Architecture</h3>
+              
                 <p className="mb-3 text-gray-700">
                   We design modern, functional spaces tailored to your
                   lifestyle.
                 </p>
                 <button
-                  onClick={() => handleNavClick("architecture")}
+                  onClick={() => handleNavClick("architecture","services")}
                   className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-all"
                 >
                   See More
@@ -161,12 +182,13 @@ export default function Home() {
               <div className="border border-gray-300 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
                 <div className="text-3xl mb-2">💻</div>
                 <h3 className="text-2xl font-bold mb-1">Web Development</h3>
+              
                 <p className="mb-3 text-gray-700">
                   We create elegant and responsive websites that showcase your
                   brand.
                 </p>
                 <button
-                  onClick={() => handleNavClick("web")}
+                  onClick={() => handleNavClick("web","services")}
                   className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-all"
                 >
                   See More
@@ -176,7 +198,15 @@ export default function Home() {
           )}
         </div>
       </section>
-      <section id="architecture" className="flex h-screen w-full">
+      <section id="architecture" className="relative flex h-screen w-full">
+      {lastSection && (
+                  <button
+                    onClick={() => handleNavClick(lastSection)}
+                    className="absolute top-6 left-6 z-20 bg-white text-black p-2 rounded-full shadow hover:scale-105 transition"
+                  >
+                    ⬅
+                  </button>
+                )}
         {/* Left Side */}
         <div className="relative w-[30%] bg-black flex items-center justify-center overflow-hidden">
           <h2 className="z-10 text-black text-3xl font-bold">Architecture</h2>
@@ -208,7 +238,15 @@ export default function Home() {
       </section>
 
       {/* Web Development Fullscreen Section */}
-      <section id="web" className="flex h-screen w-full">
+      <section id="web" className="relative flex h-screen w-full">
+      {lastSection && (
+                  <button
+                    onClick={() => handleNavClick(lastSection)}
+                    className="absolute top-6 left-6 z-20 bg-white text-black p-2 rounded-full shadow hover:scale-105 transition"
+                  >
+                    ⬅
+                  </button>
+                )}
         {/* Left Side */}
         <div className="relative w-[30%] bg-black flex items-center justify-center overflow-hidden">
           <h2 className="z-10 text-black text-3xl font-bold">

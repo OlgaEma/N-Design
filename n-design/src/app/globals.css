@@ -2,10 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: Only if you're using Google Fonts setup */
 @import "tailwindcss";
 
-/* Theming (optional) */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -32,14 +30,6 @@ body {
 }
 
 /* Key Animations */
-@keyframes growRight {
-  0% { width: 0%; }
-  100% { width: 100%; }
-}
-.animate-growRight {
-  animation: growRight 2s ease-out forwards;
-}
-
 @keyframes slideDown {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(0); }
@@ -62,4 +52,33 @@ body {
 }
 .fade-in-delayed {
   animation: fadeInDelayed 1s ease-out 1.5s forwards;
+}
+
+@keyframes expandCircleFadeIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(18);
+    opacity: 1;
+  }
+}
+.animate-expandCircleFadeIn {
+  animation: expandCircleFadeIn 1.6s ease-out forwards;
+}
+
+@keyframes fadeInNav {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeInNav {
+  animation: fadeInNav 1.2s ease-out forwards;
+  animation-delay: 1.6s;
 }
