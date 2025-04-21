@@ -8,8 +8,12 @@ export default function Home() {
   const [lastSection, setLastSection] = useState<string | null>(null);
 
   const [triggerAboutAnimation, setTriggerAboutAnimation] = useState(false);
-  const [triggerServicesAnimation, setTriggerServicesAnimation] =
-    useState(false);
+  const [triggerServicesAnimation, setTriggerServicesAnimation] = useState(false);
+  const [language, setLanguage] = useState<'en' | 'cz'>('en');
+
+  const toggleLanguage = () => {
+    setLanguage((prev) => (prev === 'en' ? 'cz' : 'en'));
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -62,28 +66,19 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-black text-white">
+    <main className="relative bg-black text-white">
+      <div
+        onClick={toggleLanguage}
+        className="absolute top-15 right-25 z-50 text-sm font-semibold tracking-wide cursor-pointer hover:scale-105 transition"
+      >
+        {language === 'en' ? 'CZ' : 'EN'}
+      </div>
       {/* Hero Section */}
       <section className="flex flex-col h-screen w-full items-center justify-center gap-[10vw]">
       <div className="relative w-[15vw] overflow-hidden">
-        {/* Static white background behind everything */}
-        {/* <div className="absolute top-0 left-0 w-full h-full bg-white z-0 fade-in-bg" /> */}
-
-        {/* Rectangle expand animation */}
-        {/* <div className="absolute top-1/2 left-1/2 w-10 h-10 bg-white z-10 animate-expandRect origin-center" /> */}
         <div
           className="absolute top-2/5 left-1/2 w-10 h-10 bg-white rounded-full z-0 animate-expandCircleFadeIn origin-center transform -translate-x-1/2"
         />  
-        {/* Light sweep animation */}
-        {/* <div
-          className="absolute top-0 left-[-100%] w-[250%] h-full z-10 animate-lightSweep delay-sweep"
-          style={{
-            background: 'linear-gradient(to right, transparent, white, transparent)',
-            filter: 'blur(6px)',
-          }}
-        /> */}
-
-        {/* Logo image always on top */}
         <img
           src="/background.png"
           alt="Animated Logo"
@@ -91,28 +86,33 @@ export default function Home() {
         />
       </div>
 
-      <nav className="flex gap-[10vw] text-[1.2vw] opacity-0 animate-fadeInNav">
-
-    <a
-      onClick={() => handleNavClick("about")}
-      className="cursor-pointer hover:text-[1.4vw] transition-all duration-300"
-    >
-      About Us
-    </a>
-    <a
-      onClick={() => handleNavClick("services")}
-      className="cursor-pointer hover:text-[1.4vw] transition-all duration-300"
-    >
-      Services
-    </a>
-    <a
-      href="#contact"
-      className="hover:text-[1.4vw] transition-all duration-300"
-    >
-      Contact
-    </a>
-  </nav>
-</section>
+        <nav className="flex gap-[10vw] text-[1.2vw] opacity-0 animate-fadeInNav">
+          <span className="inline-block transition-transform duration-300 hover:scale-150">
+            <a
+              onClick={() => handleNavClick("about")}
+              className="cursor-pointer"
+            >
+              About Us
+            </a>
+          </span>
+          <span className="inline-block transition-transform duration-300 hover:scale-200">
+            <a
+              onClick={() => handleNavClick("services")}
+              className="cursor-pointer"
+            >
+              Services
+            </a>
+          </span>
+          <span className="inline-block transition-transform duration-300 hover:scale-120">
+            <a
+              onClick={() => handleNavClick("contact")}
+              className="cursor-pointer"
+            >
+              Contact
+            </a>
+          </span>
+        </nav>
+      </section>
 
       {/* About Section */}
       <section
