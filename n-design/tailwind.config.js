@@ -16,6 +16,9 @@ module.exports = {
       animation: {
         sweep: 'sweep 2s ease-in-out infinite',
       },
+      fontFamily: {
+        montserrat: ['var(--font-montserrat)', 'sans-serif'],
+      },
     },
   },
   plugins: [],

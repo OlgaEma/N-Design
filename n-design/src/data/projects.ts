@@ -2,58 +2,69 @@ export type Project = {
   slug: string;
   title: string;
   thumbnail: string;
-  render: string;
-  plan: string;
+  renders: string[];
+  plans: string[];
   description: string;
 };
 
 export const projects: Project[] = [
   {
-    slug: "modern-villa-with-the-swimming-pool",
-    title: "Modern Villa with the Swimming Pool",
-    thumbnail: "/projects/au-ex/render1.jpg",
-    render: "/projects/au-ex/render1.jpg",
-    plan: "/projects/au-ex/house-plan1.jpg",
-    description: "A luxurious villa in Australia with a swimming pool.",
+    slug: "texas-family-houses",
+    title: "Architectural design for two double story family houses, Horseshoe Bay, Texas, USA",
+    thumbnail: "/projects/jim-bellevue/render1.jpg",
+    renders: ["/projects/jim-bellevue/render1.jpg"],
+    plans: [
+      "/projects/jim-bellevue/house-plan1.jpg",
+      "/projects/jim-bellevue/house-plan2.jpg",
+    ],
+    description: "A modern double-story residential project in Horseshoe Bay, Texas.",
   },
   {
-    slug: "modern-house-in-the-suburb-of-berlin",
-    title: "Modern House in the Suburb of Berlin",
-    thumbnail: "/projects/berlin-p1/render1.jpg",
-    render: "/projects/berlin-p1/render2.jpg",
-    plan: "/projects/berlin-p1/house-plan.jpg",
-    description: "A modern house located in the suburbs of Berlin.",
+    slug: "texas-multifamily-building",
+    title: "Architectural design for residential multifamily building on the corner, Horseshoe Bay, Texas, USA",
+    thumbnail: "/projects/jim-p2/render1.jpg",
+    renders: ["/projects/jim-p2/render1.jpg"],
+    plans: [
+      "/projects/jim-p2/house-plan-floor1.jpg",
+      "/projects/jim-p2/house-plan-floor2.jpg",
+    ],
+    description: "Multifamily residential design located on a prominent corner site in Texas.",
   },
   {
-    slug: "modern-house-in-australia-1",
-    title: "Modern House in Australia",
-    thumbnail: "",
-    render: "",
-    plan: "",
-    description: "A modern house in Australia.",
+    slug: "berlin-house-addition",
+    title: "Architectural design for house addition, Berlin, Germany",
+    thumbnail: "/projects/berlin-p1/render-1.jpg",
+    renders: [
+      "/projects/berlin-p1/render-1.jpg",
+      "/projects/berlin-p1/render-2.jpg",
+      "/projects/berlin-p1/render-3.jpg",
+      "/projects/berlin-p1/render-4.jpg",
+    ],
+    plans: ["/projects/berlin-p1/house-plan.jpg"],
+    description: "A house addition designed for a property in the suburbs of Berlin.",
   },
   {
-    slug: "modern-house-in-australia-2",
-    title: "Modern House in Australia",
-    thumbnail: "",
-    render: "",
-    plan: "",
-    description: "A modern house in Australia.",
+    slug: "australia-family-house",
+    title: "Architectural design for single family house, Australia",
+    thumbnail: "/projects/au-ex/render-1.jpg",
+    renders: ["/projects/au-ex/render-1.jpg"],
+    plans: ["/projects/au-ex/house-plan1.jpg"],
+    description: "A contemporary family home in Australia.",
   },
   {
-    slug: "modern-villa-in-australia",
-    title: "Modern Villa in Australia",
-    thumbnail: "/projects/palm-cove-p1/render1.jpg",
-    render: "/projects/palm-cove-p1/house-render1.jpg",
-    plan: "/projects/palm-cove-p1/house-plan1.jpg",
-    description: "A luxurious villa located in Palm Cove, Australia.",
-  },
-  {
-    slug: "modern-villa-in-australia-2",
-    title: "Modern Villa in Australia",
+    slug: "palm-cove-lot-37",
+    title: "Architectural design for single family house, Palm cove lot 37, Australia",
     thumbnail: "/projects/palm-cove-p2/render1.jpg",
-    render: "/projects/palm-cove-p2/house-render1.jpg",
-    plan: "/projects/palm-cove-p2/house-plan1.jpg",
-    description: "Another luxurious villa located in Palm Cove, Australia.",
-  }
+    renders: ["/projects/palm-cove-p2/render1.jpg"],
+    plans: ["/projects/palm-cove-p2/house-plan1.jpg"],
+    description: "Modern villa located in Palm Cove, Lot 37, designed for luxury living.",
+  },
+  {
+    slug: "palm-cove-lot-35",
+    title: "Architectural design for single family house, Palm cove lot 35, Australia",
+    thumbnail: "/projects/palm-cove-p1/render1.jpg",
+    renders: ["/projects/palm-cove-p1/render1.jpg"],
+    plans: ["/projects/palm-cove-p1/house-plan1.jpg"],
+    description: "Elegant villa in Palm Cove, Lot 35, designed with comfort and functionality in mind.",
+  },
 ];
