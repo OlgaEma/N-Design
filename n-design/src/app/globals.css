@@ -65,7 +65,7 @@ body {
 .fade-in-delayed {
   opacity: 0;
   animation: fadeInDelayed 1s ease-in forwards;
-  animation-delay: 1.2s; /* Adjust this based on your slide animation duration */
+  animation-delay: 1.9s; /* Adjust this based on your slide animation duration */
 }
 
 @keyframes expandCircleFadeIn {
@@ -74,12 +74,12 @@ body {
     opacity: 0;
   }
   100% {
-    transform: scale(18);
+    transform: scale(var(--final-scale));
     opacity: 1;
   }
 }
 .animate-expandCircleFadeIn {
-  animation: expandCircleFadeIn 1.6s ease-out forwards;
+  animation: expandCircleFadeIn var(--scale-duration) ease-in-out forwards;
 }
 
 @keyframes fadeInNav {
@@ -202,4 +202,69 @@ body {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: dash 2s linear forwards;
+}
+
+:root {
+  --final-scale: 3.5;
+  --scale-duration: 1.4s;
+}
+
+/* Small mobile */
+@media (min-width: 400px) {
+  :root {
+    --final-scale: 4;
+    --scale-duration: 1.6s;
+  }
+}
+
+/* Mid-mobile */
+@media (min-width: 460px) {
+  :root {
+    --final-scale: 5;
+    --scale-duration: 1.8s;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  :root {
+    --final-scale: 5.5;
+    --scale-duration: 2s;
+  }
+}
+
+/* Medium desktop */
+@media (min-width: 1080px) {
+  :root {
+    --final-scale: 7;
+    --scale-duration: 2.4s;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1500px) {
+  :root {
+    --final-scale: 10;
+    --scale-duration: 2.8s;
+  }
+}
+
+@media (min-width: 1880px) {
+  :root {
+    --final-scale: 12;
+    --scale-duration: 3.2s;
+  }
+}
+
+@media (min-width: 2400px) {
+  :root {
+    --final-scale: 14;
+    --scale-duration: 3.6s;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 652px) {
+  .logo-img {
+    transform: translate(-50%, -45%) scale(var(--final-scale));
+  }
 }
