@@ -1,15 +1,25 @@
-import { projects } from "@/data/projects";
+"use client";
+import { useSearchParams } from "next/navigation";
+import { projects as projectsEn } from "@/data/projects.en";
+import { projects as projectsCz } from "@/data/projects.cz";
 import { notFound } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type Props = {
-  params: {
-    slug: string;
-  };
+  params: { slug: string };
 };
 
 export default function ProjectPage({ params }: Props) {
-  console.log("Slug from URL:", params.slug);
-  const project = projects.find((p) => p.slug === params.slug);
+  const searchParams = useSearchParams();
+  const lang = searchParams.get("lang") === "cz" ? "cz" : "en";
+
+  const project = (lang === "cz" ? projectsCz : projectsEn).find(
+    (p) => p.slug === params.slug
+  );
+
+  useEffect(() => {
+    localStorage.setItem("preferredLanguage", lang);
+  }, [lang]);
 
   if (!project) return notFound();
 

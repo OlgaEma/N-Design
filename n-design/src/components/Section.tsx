@@ -9,6 +9,7 @@ interface SectionProps {
   customLayout?: boolean
   leftContent?: ReactNode
   rightContent?: ReactNode
+   height?: string 
 }
 
 export default function Section({
@@ -18,12 +19,13 @@ export default function Section({
   customLayout = false,
   leftContent,
   rightContent,
+  height
 }: SectionProps) {
   return (
     <section
       id={id}
       ref={refProp}
-      className="relative w-full h-screen overflow-hidden flex"
+      className={`relative w-full ${height ?? 'h-screen'} overflow-hidden flex`}
     >
       {customLayout ? (
         // Responsive layout: column on small, row on xl and up

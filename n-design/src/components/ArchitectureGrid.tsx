@@ -1,16 +1,21 @@
 import Link from "next/link";
-import { projects } from "@/data/projects";
-
+import { projects as projectsEn } from "@/data/projects.en";
+import { projects as projectsCz}  from "@/data/projects.cz";
+import { useMemo } from "react";
 
 type Props = {
   hoveredSlug: string | null;
   trigger: boolean;
+  language: "en" | "cz";
 };
-export default function ArchitectureGrid({ hoveredSlug, trigger }: Props) {
+export default function ArchitectureGrid({ hoveredSlug, trigger, language }: Props) {
+  const projects = useMemo(() => {
+  return language === "cz" ? projectsCz : projectsEn;
+}, [language]);
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
   {projects.map((project, index) => (
-    <Link key={project.slug} href={`/architecture/${project.slug}`}>
+    <Link key={project.slug} href={`/architecture/${project.slug}?lang=${language}`}>
       <div
         className={`group cursor-pointer transform transition duration-500 ${
           hoveredSlug === project.slug ? "scale-105 " : ""

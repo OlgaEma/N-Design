@@ -1,12 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import lang from "@/data/lang";
 
 type Props = {
   trigger: boolean;
+  language: "en" | "cz";
 };
 
-export default function ContactForm({ trigger }: Props) {
+
+
+export default function ContactForm({ trigger, language }: Props) {
+  const t = lang[language].contact;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -47,7 +52,7 @@ export default function ContactForm({ trigger }: Props) {
       }`}
     >
       <h3 className="text-2xl font-semibold mb-6 text-white text-center">
-        Get in Touch
+        {t.heading}
       </h3>
 
       <div className="mb-6">
@@ -56,7 +61,7 @@ export default function ContactForm({ trigger }: Props) {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          placeholder="Your Name"
+          placeholder={t.namePlaceholder}
           className="w-full p-3 rounded-md bg-[#333333] text-white focus:outline-none focus:ring-2 focus:ring-[#f0a500] placeholder-gray-500 transition"
           required
         />
@@ -68,7 +73,7 @@ export default function ContactForm({ trigger }: Props) {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          placeholder="Your Email"
+          placeholder={t.emailPlaceholder}
           className="w-full p-3 rounded-md bg-[#333333] text-white focus:outline-none focus:ring-2 focus:ring-[#f0a500] placeholder-gray-500 transition"
           required
         />
@@ -79,7 +84,7 @@ export default function ContactForm({ trigger }: Props) {
           name="message"
           value={formData.message}
           onChange={handleChange}
-          placeholder="Your Message"
+          placeholder={t.messagePlaceholder}
           rows={5}
           className="w-full p-3 rounded-md bg-[#333333] text-white focus:outline-none focus:ring-2 focus:ring-[#f0a500] placeholder-gray-500 transition"
           required
@@ -90,12 +95,12 @@ export default function ContactForm({ trigger }: Props) {
         type="submit"
         className="w-full bg-white text-black p-3 rounded-md font-semibold hover:bg-[#d18f00] transition"
       >
-        Send Message
+        {t.button}
       </button>
 
       {submitted && (
         <p className="text-center text-green-500 mt-4 animate-fadeIn">
-          Message sent successfully!
+          {t.success}
         </p>
       )}
     </form>

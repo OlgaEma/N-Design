@@ -8,6 +8,7 @@ interface MobileSectionProps {
   rightContentBlocks?: (React.ReactNode | null)[]
   logo?: React.ReactNode | null
   background?: string
+  handleNavClick?: (id: string, fromId?: string) => void;
 }
 
 export default function MobileSection({
@@ -16,6 +17,7 @@ export default function MobileSection({
   rightContentBlocks = [],
   logo,
   background = 'black',
+  handleNavClick,
 }: MobileSectionProps) {
   return (
     <section
