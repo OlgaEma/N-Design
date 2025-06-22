@@ -68,6 +68,8 @@ export default function AboutDesktop({ language, trigger, refProp }: Props) {
             <div className="absolute top-0 left-0 w-[2px] h-1/2 bg-white animate-lineDown z-10" />
             <div className="absolute bottom-0 left-0 w-[2px] h-1/2 bg-white animate-lineUp z-10" />
             <div className="absolute top-1/2 left-0 h-[2px] w-0 bg-white animate-horizontalSplit z-10" />
+            <div className="absolute top-1/2 left-1/2 w-[2px] h-full bg-white animate-lineUpFromCenter origin-bottom z-10" />
+            <div className="absolute top-1/2 left-1/2 w-[2px] h-full bg-white animate-lineDownFromCenter origin-top z-10" />
           </>
         )}
 

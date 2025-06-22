@@ -27,7 +27,7 @@ export default function ReferencesList({ hoveredSlug, setHoveredSlug, trigger, l
                 onMouseEnter={() => setHoveredSlug(project.slug)}
                 onMouseLeave={() => setHoveredSlug(null)}
                 className={`cursor-pointer transition duration-300 block ${
-                    hoveredSlug === project.slug ? "text-pink-400 scale-105" : ""
+                    hoveredSlug === project.slug ? "text-gray-400 scale-105" : ""
                 } ${trigger ? "fade-in-delayed" : "opacity-0"}`}
                 style={trigger ? { animationDelay: `${delay}s` } : {}}
                 >

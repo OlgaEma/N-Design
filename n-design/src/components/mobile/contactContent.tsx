@@ -6,11 +6,15 @@ export default function getContactContent(language: "en" | "cz") {
 
   return {
     leftContent: (
-      <div className="text-center text-white font-montserrat flex flex-col gap-4">
-        <h2 className="text-2xl font-bold">{t.heading}</h2>
+      <div className="relative z-10 w-full px-4 flex flex-col items-center gap-20 text-white font-montserrat">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center fade-in-delayed">{t.heading}</h2>
+        <div className="px-4 flex flex-col gap-4 text-center text-lg lg:text-sm xl:text-lg">
         <p>{t.email}</p>
         <p>{t.phone}</p>
         <p>{t.address}</p>
+        <p>{t.name}</p>
+        <p>{t.ico}</p>
+        </div>
       </div>
     ),
 

@@ -137,6 +137,7 @@ useEffect(() => {
   const contactContent = getContactContent(language);
   const aboutContent = getAboutContent(language);
   const servicesContent = getServicesContent(language);
+  
 
   return (
     <main className="relative bg-black text-[#FFFFFF] font-montserrat">
@@ -340,19 +341,17 @@ useEffect(() => {
           trigger={triggerContactAnimation}
           height="h-auto"
           leftContent={
-            <div className="relative w-[30%] bg-black flex justify-center py-20">
-              {triggerArchitectureAnimation && (
+            <div className="relative w-[30%] bg-black flex items-center justify-center overflow-hidden">
+              {triggerContactAnimation && (
                 <div className="absolute top-0 left-0 w-[8%] h-full bg-[#FFFFFF] animate-slideDown z-0" />
               )}
-              <div className="relative z-10 w-full px-6 flex flex-col items-center gap-8 text-white font-montserrat">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center fade-in-delayed">
-                  Contact
-                </h2>
-                <div className="text-lg leading-relaxed space-y-4 text-center fade-in-delayed">
-                  <p>Email: info@n-design.cz</p>
-                  <p>IČO: 03453324</p>
-                  <p>Phone: +420 730 979 117</p>
-                  <p>Prague, Czech Republic</p>
+              
+            
+              <div className={`relative z-10 w-full px-4 flex flex-col items-center gap-20 text-white font-montserrat ${triggerContactAnimation ? 'fade-in-delayed' : 'opacity-0'}`}>
+                
+                <div className="px-4 flex flex-col gap-4 text-center text-lg lg:text-sm xl:text-lg">
+                  <p>{contactContent.leftContent}</p>
+
                 </div>
               </div>
             </div>
