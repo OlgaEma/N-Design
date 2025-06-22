@@ -143,7 +143,7 @@ export default function AboutDesktop({ language, trigger, refProp }: Props) {
               <img
                 src={content.nedeljko.image}
                 alt="Nedeljko"
-                className={`rounded-full object-cover shadow-md shrink-0 opacity-0 ${
+                className={`rounded-full object-cover object-top shadow-md shrink-0 opacity-0 ${
                   trigger ? 'fade-in-delayed' : ''
                 }`}
                 style={{
